@@ -18,30 +18,11 @@ public class Fibonacci {
         return f;
     }
 
-    public static void main(String[] args) throws InterruptedException {
-        System.out.println("======================================");
-        System.out.println("RUNNABLE В КОНСТРУКТОР");
-
-        Thread myFirstThread = new Thread(() -> System.out.println("first fib: " + Arrays.toString(fib(10000))));
+    public static void main(String[] args) {
+        Thread myFirstThread = new Thread(() -> System.out.println("first fib: " + Arrays.toString(fib(15))));
         Thread mySecondThread = new Thread(() -> System.out.println("second fib: " + Arrays.toString(fib(5))));
 
         myFirstThread.start();
         mySecondThread.start();
-
-        myFirstThread.interrupt();
-
-        myFirstThread.join();
-        mySecondThread.join();
-
-        System.out.println("======================================");
-        System.out.println("НАСЛЕДОВАНИЕ ОТ Thread");
-
-        FibThread firstFib = new FibThread(5);
-        FibThread secFib = new FibThread(15);
-
-        firstFib.start();
-        secFib.start();
-
-        System.out.println("главный поток завершен");
     }
 }
