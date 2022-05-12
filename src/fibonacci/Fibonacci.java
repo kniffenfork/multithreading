@@ -18,11 +18,14 @@ public class Fibonacci {
         return f;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Thread myFirstThread = new Thread(() -> System.out.println("first fib: " + Arrays.toString(fib(15))));
         Thread mySecondThread = new Thread(() -> System.out.println("second fib: " + Arrays.toString(fib(5))));
 
         myFirstThread.start();
+
+        myFirstThread.join();
+
         mySecondThread.start();
     }
 }
